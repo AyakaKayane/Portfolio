@@ -1,0 +1,21 @@
+<div class="room">
+  <div class="row">
+    <div class="waku">
+
+      <% @items.each do |item| %>
+        <tr>
+          <% if File.exist?("app/assets/images/items/#{item.id}.jpg") %>
+              <td><%= image_tag "items/#{item.id}" %></td>
+            <% else %>
+              <td><%= image_tag "no_image.png" %></td>
+            <% end %>
+          <td><%= link_to("#{item.products_name}", "/posts/#{item.post.id}") %></td>
+          <td><%= item.brand %></td>
+          <td><%= item.size %></td>
+          <td><%= item.price %></td>
+        </tr>
+      <% end %>
+
+    </div>
+  </div>
+</div>

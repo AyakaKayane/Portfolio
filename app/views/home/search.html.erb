@@ -1,0 +1,31 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+      <div class="post_items">
+        <h2 class="heading10" data-en="Search results"><span>検索結果一覧</span></h2>
+        <br>
+        <br>
+        <% @items.each do |item| %>
+          <div class="itembox">
+            <% if File.exist?("app/assets/images/items/#{item.id}.jpg") %>
+              <td><%= image_tag "items/#{item.id}" %></td>
+              <% else %>
+              <td><%= image_tag "no_image.png" %></td>
+            <% end %>
+            <div class="post_items_list">
+              <td>アイテム名&emsp;&emsp;
+              <%= link_to("#{item.products_name}", "/posts/#{item.post.id}") %></td><br>
+              <td>ブランド名&emsp;&emsp;
+              <%= item.brand %></td><br>
+              <td>サイズ&emsp;&emsp;&emsp;&emsp;
+              <%= item.size %></td><br>
+              <td>価格&emsp;&emsp;&emsp;&emsp;&emsp;&yen;
+              <%= item.price %></td><br>
+            </div>
+            <br>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

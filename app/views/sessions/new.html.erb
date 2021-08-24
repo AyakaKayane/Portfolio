@@ -1,0 +1,24 @@
+<div class="menu">
+  <div class="field_container">
+    <h3>ログイン</h3>
+      <%= form_for(:session, url: login_path) do |f| %>
+        <table class="mannaka">
+          <tr>
+            <th><%= f.label :email ,"メールアドレス"%></th>
+            <td><%= f.email_field :email, class: "emps" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :password ,"パスワード"%></th>
+            <td><%= f.password_field :password, class: "emps" %></td>
+          </tr>
+        </table>
+        <div>
+          <ul>
+            <%= f.submit "ログイン", class: "btn btn-primary" %>
+          </ul>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+

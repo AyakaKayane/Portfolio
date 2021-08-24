@@ -1,0 +1,71 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+      <!--投稿表示-->
+      <div class="main_post">
+        <div class="post_user_name">
+          <%= link_to(@user.name, "/users/#{@user.id}") %>
+        </div>
+        <% if File.exist?("app/assets/images/posts/#{@post.id}.jpg") %>
+          <td><%= image_tag "posts/#{@post.id}" %></td>
+          <% else %>
+          <td><%= image_tag "noimage.png" %></td>
+        <% end %>
+        <div class="post_image_title">
+          <td><%= @post.image_title %></td>
+        </div>
+        <div class="description">
+          <td><%= @post.description %></td>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <!--アイテム表示-->
+      <div class="post_items">
+      <h2 class="heading10" data-en="ITEMS"><span>使用アイテム一覧</span></h2>
+        <% @items.each do |item| %>
+          <div class="itembox">
+            <% if File.exist?("app/assets/images/items/#{item.id}.jpg") %>
+              <td><%= image_tag "items/#{item.id}" %></td>
+              <% else %>
+              <td><%= image_tag "noimage.png" %></td>
+            <% end %>
+            <br>
+            <div class="post_items_list">
+              <td>アイテム名&emsp;&emsp;
+              <%= item.products_name %></td><br>
+              <td>ブランド名&emsp;&emsp;
+              <%= item.brand %></td><br>
+              <td>サイズ&emsp;&emsp;&emsp;&emsp;
+              <%= item.size %></td><br>
+              <td>価格&emsp;&emsp;&emsp;&emsp;&emsp;&yen;
+              <%= item.price %></td><br>
+            </div>
+
+            <% if @post.user_id == @current_user.id %>
+              <div class="postmenus">
+                <%= link_to("アイテム編集", edit_item_path) %>
+                <%= link_to("アイテム削除", "/items/#{item.post.id}/destroy", method: "post") %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="post-time">
+        <%= @post.created_at.strftime("%Y-%m-%d") %>
+      </div>
+      <% if @post.user_id == @current_user.id %>
+        <div class="post-menus">
+          <%= link_to("アイテム登録をする", "/items/new/#{@post.id}") %>
+          <%= link_to("投稿編集","/posts/#{@post.id}/edit") %>
+          <%= link_to("投稿削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
+        </div>
+      <% end %>
+      <br>
+      <%= link_to("トップページへ戻る", "/") %>
+      <br>
+    </div>
+  </div>
+</div>

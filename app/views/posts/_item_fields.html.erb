@@ -1,0 +1,37 @@
+<!-- class="nested-fields"　←ここ絶対に必要 -->
+<div class="nested-fields">
+  <table>
+    <tr>
+      <td class="td-fixed-select">
+
+        <%= f.fields_for :items do |t| %>
+        <div class="msr_file_05">
+          <p>アイテム写真</p>
+          <label for="file_photo">
+            画像を選択してください
+            <%= t.file_field :item_image %>
+          </label>
+        </div>
+        <div class="msr_text_05">
+          <label>商品名</label>
+          <%= t.text_field :products_name %>
+        </div>
+        <div class="msr_text_05">
+          <label>ブランド</label>
+          <%= t.text_field :brand %>
+        </div>
+        <div class="msr_text_05">
+          <label>サイズ</label>
+          <%= t.text_field :size %>
+        </div>
+        <div class="msr_text_05">
+          <label>価格</label>
+          <%= t.text_field :price %>
+        </div>
+        <!-- 削除ボタン -->
+        <%= link_to_remove_association "アイテムを削除", f %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</div>

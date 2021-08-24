@@ -1,0 +1,40 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">編集する</h1>
+ <td><%= @item.post.id %></td>
+
+    <%= form_tag("/items/#{@item.post.id}/update", multipart: true ) do %>
+      <div class="form">
+        <div class="form-body">
+          <table class="msr_text_05">
+        <tr>
+          <th><span class="must">必須</span><%= "アイテム写真" %></th>
+          <td><input type="file" name="item_image" value="<%= @item.item_image %>"></td>
+        </tr>
+        <tr>
+          <th><span class="must">必須</span><%= "アイテム名" %></th>
+          <td><input name="products_name" value="<%= @item.products_name %>"></td>
+        </tr>
+        <tr>
+          <th><span class="must">必須</span><%= "ブランド" %></th>
+          <td><input name="brand" value="<%= @item.brand %>"></td>
+        </tr>
+        <tr>
+          <th><span class="must">必須</span><%= "サイズ" %></th>
+          <td><input name="size" value="<%= @item.size %>"></td>
+        </tr>
+        <tr>
+          <th><span class="must">必須</span><%= "価格" %></th>
+          <td><span>&yen;</span><input name="price" value="<%= @item.price %>"></td>
+
+          <input id="item.post.id" name="item.post.id"  value="<%= @item.post.id %>">
+
+        </tr>
+      </table>
+          <input type="submit" value="保存">
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

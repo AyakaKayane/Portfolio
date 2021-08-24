@@ -1,0 +1,49 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+
+    <% @items.each do |item| %>
+        <tr>
+          <% if File.exist?("app/assets/images/items/#{item.id}.jpg") %>
+              <td><%= image_tag "items/#{item.id}" %></td>
+            <% else %>
+              <td><%= image_tag "noimage.png" %></td>
+            <% end %>
+      <tr>
+        <!--アイテム画像-->
+        <td></td>
+      </tr>
+      <tr>
+        <!--アイテム名-->
+        <td><%= item.products_name %></td>
+      </tr>
+      <tr>
+        <!--ブランド-->
+        <td><%= item.brand %></td>
+      </tr>
+      <tr>
+        <!--サイズ-->
+        <td><%= item.size %></td>
+      </tr>
+      <tr>
+        <!--価格-->
+        <td><%= item.price %></td>
+      </tr>
+    <% end %>
+
+
+
+      <div class="post-time">
+        <%= @item.created_at.strftime("%Y-%m-%d") %>
+      </div>
+      <% if @post.user_id == @current_user.id %>
+      <div class="post-menus">
+        <%= link_to("アイテム編集","/items/#{@post.id}/edit") %>
+        <%= link_to("アイテム削除", items_path(@item), method: :delete) %>
+      </div>
+      <% end %>
+      <%= link_to("コーディネート画面へ戻る", "/posts/#{@post.id}") %>
+    </div>
+  </div>
+  <%= link_to("トップページへ", "/") %>
+</div>
