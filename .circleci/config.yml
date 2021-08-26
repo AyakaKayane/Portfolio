@@ -28,7 +28,7 @@ jobs:
   rubocop:
     working_directory: ~/portfolio
     docker:
-      - image: circleci/ruby:2.5.1
+      - image: circleci/ruby:2.7.0
         environment:
           BUNDLER_VERSION: 2.1.2
     steps:
