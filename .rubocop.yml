@@ -44,3 +44,4 @@ AllCops:
     - "app/controllers/sessions_controller.rb"
     - "Rakefile"
     - "spec/**/*"
+    - 'vendor/**/*'
