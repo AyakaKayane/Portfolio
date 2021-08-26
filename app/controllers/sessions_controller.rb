@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to("/")
+      redirect_to('/')
     else
       render 'new'
     end
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    redirect_to("/")
+    redirect_to('/')
   end
 
   def login(email, password)

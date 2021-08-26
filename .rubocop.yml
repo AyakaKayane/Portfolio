@@ -1,0 +1,46 @@
+require:
+  - rubocop
+
+AsciiComments:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/AbcSize:
+  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
+  # a Float.
+  Max: 30
+
+MethodLength:
+  CountComments: true  # count full line comments?
+  Max: 15
+
+AllCops:
+  Exclude:
+    - "db/**/*"
+    - "bin/*"
+    - "config/environments/*"
+    - "config/application.rb"
+    - "config/initializers/*"
+    - "config/spring.rb"
+    - "lib/tasks/*"
+    - "vendor/**/*"
+    - "path/ruby"
+    - "node_modules/**/*"
+    - "Gemfile"
+    - "config/**/*"
+    - "test/application_system_test_case.rb"
+    - "app/helpers/*"
+    - "app/models/**/*"
+    - "test/**/*"
+    - "app/uploaders/**/*"
+    - "app/controllers/sessions_controller.rb"
+    - "Rakefile"
+    - "spec/**/*"

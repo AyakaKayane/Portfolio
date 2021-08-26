@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
-  before_action :authenticate_user, only:[:show]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user, only: [:show]
 
   def index
     @user = current_user
@@ -11,27 +11,26 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     @items = @post.items
-    #投稿に紐付くユーザ情報を取得する(Postモデルで定義した関数)
+    # 投稿に紐付くユーザ情報を取得する(Postモデルで定義した関数)
     @user = @post.user
-    
   end
 
   def new
     @post = Post.new
   end
 
-
   def create
-    @post = Post.new(image: params[:image], image_title: params[:image_title], description: params[:description])
-    @post.user_id="#{current_user.id}"
+    @post = Post.new(image: params[:image],
+                     image_title: params[:image_title],
+                     description: params[:description])
+    @post.user_id = current_user.id.to_s
     if @post.save
-      #@post.image="#{@post.id}.jpg"
-      @post.image="#{@post.id}.jpg"
-      image=params[:image]
+      @post.image = "#{@post.id}.jpg"
+      image = params[:image]
       File.binwrite("app/assets/images/posts/#{@post.image}", image.read)
       redirect_to("/posts/#{@post.id}")
     else
-      render("/posts/new")
+      render('/posts/new')
     end
   end
 
@@ -43,7 +42,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @post.image_title = params[:image_title]
     @post.description = params[:description]
-    @post.image="#{@post.id}.jpg"
+    @post.image = "#{@post.id}.jpg"
     image = params[:image]
     File.binwrite("app/assets/images/posts/#{@post.image}", image.read)
     if @post.save
@@ -56,15 +55,14 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    redirect_to("/")
+    redirect_to('/')
   end
 
   def ensure_correct_user
     @post = Post.find_by(id: params[:id])
     if @post.user_id != @current_user.id
       flash[:notice] = "権限がありません"
-      redirect_to("/posts/index")
+      redirect_to('/posts/index')
     end
   end
-
 end

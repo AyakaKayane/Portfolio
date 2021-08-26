@@ -3,24 +3,34 @@ class ItemsController < ApplicationController
     @posts = Post.all
     @user = current_user
     @items = @user.items
-    #@userの子であるitemに限定する。
+    # @userの子であるitemに限定する
   end
 
   def new
     @post = Post.find_by(id: params[:id])
-    @item = Item.new(item_image: params[:item_image], brand: params[:brand], size: params[:size], price: params[:price], products_name: params[:products_name], post_id: params[:post_id])
+    @item = Item.new(item_image: params[:item_image],
+                     brand: params[:brand],
+                     size: params[:size],
+                     price: params[:price],
+                     products_name: params[:products_name],
+                     post_id: params[:post_id])
   end
 
   def create
-    @item = Item.new(item_image: params[:item_image], brand: params[:brand], size: params[:size], price: params[:price], products_name: params[:products_name], post_id: params[:post_id])
+    @item = Item.new(item_image: params[:item_image],
+                     brand: params[:brand],
+                     size: params[:size],
+                     price: params[:price],
+                     products_name: params[:products_name],
+                     post_id: params[:post_id])
     @item.user_id = current_user.id
     if @item.save
-      @item.item_image="#{@item.id}.jpg"
-      image=params[:item_image]
+      @item.item_image = "#{@item.id}.jpg"
+      image = params[:item_image]
       File.binwrite("app/assets/images/items/#{@item.item_image}", image.read)
       redirect_to("/items/#{@item.post_id}/show")
     else
-      render("/items/new")
+      render('/items/new')
     end
   end
 
@@ -28,13 +38,10 @@ class ItemsController < ApplicationController
     @item = Item.find_by(params[:id])
     @post = Post.find_by(id: params[:id])
     @items = @post.items
-    #↑アイテム登録時に必要(投稿に紐づくアイテムの情報をitems/new/:idより取得)
-
   end
 
   def edit
     @item = Item.find_by(params[:id])
-    #@post = @item.post.id
   end
 
   def update
@@ -43,7 +50,7 @@ class ItemsController < ApplicationController
     @item.brand = params[:brand]
     @item.size = params[:size]
     @item.price = params[:price]
-    @item.item_image="#{@item.id}.jpg"
+    @item.item_image = "#{@item.id}.jpg"
     image = params[:item_image]
     File.binwrite("app/assets/images/items/#{@item.item_image}", image.read)
     if @item.save

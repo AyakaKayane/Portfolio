@@ -43,12 +43,6 @@
               <%= item.price %></td><br>
             </div>
 
-            <% if @post.user_id == @current_user.id %>
-              <div class="postmenus">
-                <%= link_to("アイテム編集", edit_item_path) %>
-                <%= link_to("アイテム削除", "/items/#{item.post.id}/destroy", method: "post") %>
-              </div>
-            <% end %>
           </div>
         <% end %>
       </div>

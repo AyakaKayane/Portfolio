@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only:[:destroy]
-  before_action :authenticate_user, only:[:show]
+  before_action :logged_in_user, only: [:destroy]
+  before_action :authenticate_user, only: [:show]
 
   def index
     @users = User.all
@@ -16,13 +16,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(name: params[:name], email: params[:email], password: params[:password])
+    @user = User.new(name: params[:name],
+                     email: params[:email],
+                     password: params[:password])
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to("/users/#{@user.id}")
     else
-      render("users/new")
+      render('users/new')
     end
   end
 
@@ -36,10 +38,9 @@ class UsersController < ApplicationController
     @user.email = params[:email]
     if @user.save
       flash[:notice] = "ユーザー情報を編集しました"
-      redirect_to("/users/#{@user.id}")
+      redirect_to('/users/#{@user.id}')
     else
-      render("users/edit")
+      render('users/edit')
     end
   end
-
 end

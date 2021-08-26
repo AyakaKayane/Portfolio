@@ -33,6 +33,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'hirb'
   gem 'hirb-unicode'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -43,8 +45,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', require:false
-  gem 'rubocop-rails', require:false
-  gem 'unicode-display_width', '>= 1.4.0', '< 2.0'
 end
 
 group :test do

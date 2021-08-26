@@ -1,28 +1,30 @@
 <div class="main posts-new">
   <div class="container">
-    <h1 class="form-heading">投稿画面</h1>
+    <h1 class="form-heading">新規投稿</h1>
 
     <%= form_tag("/posts/create", {multipart: true})do %>
-
-      <table class="msr_text_05">
-        <tr>
-          <th><span class="must">必須</span><%= "メイン写真(コーディネート写真)" %></th>
-          <td><input type="file" name="image" value="<%= @post.image %>"></td>
-        </tr>
-        <tr>
-          <th><span class="must">必須</span><%= "タイトル" %></th>
-          <td><input name="image_title" value="<%= @post.image_title %>"></td>
-        </tr>
-        <tr>
-          <th><span class="must">必須</span><%= "説明" %></th>
-          <td><input name="description" value="<%= @post.description %>"></td>
-        </tr>
-      </table>
-
-      <div>
-        <ul >
-          <input class="btn btn-primary" type="submit" value="投稿" >
-        </ul>
+      <div class="form">
+        <div class="form-body">
+          <table class="msr_text_05">
+            <tr>
+              <th><%= "メイン写真" %></th>
+              <td><input type="file" name="image" value="<%= @post.image %>"></td>
+            </tr>
+            <tr>
+              <th><%= "タイトル" %></th>
+              <td><input name="image_title" value="<%= @post.image_title %>"></td>
+            </tr>
+            <tr>
+              <th><%= "説明" %></th>
+              <td><input name="description" value="<%= @post.description %>"></td>
+            </tr>
+          </table>
+          <div>
+            <ul >
+              <input class="btn btn-primary" type="submit" value="投稿" >
+            </ul>
+          </div>
+        </div>
       </div>
     <% end %>
     <br>
