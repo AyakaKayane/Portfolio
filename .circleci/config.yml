@@ -1,11 +1,5 @@
 version: 2.1
 jobs:
-  build:
-    steps:
-      # ... steps for building/testing app ...
-
-      - setup_remote_docker:
-        version: 19.03.13
   rspec:
     working_directory: ~/portfolio
     docker:
