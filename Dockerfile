@@ -12,7 +12,8 @@ RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp
 COPY Gemfile.lock /myapp
-RUN bundle install
+COPY ./vendor/bundle /api-rails/vendor/bundle
+RUN bundle install --path vendor/bundle -j4
 COPY . /myapp
 
 RUN yarn install --check-files
