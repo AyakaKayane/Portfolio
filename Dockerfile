@@ -12,6 +12,7 @@ RUN mkdir /myapp
 WORKDIR /myapp
 COPY ./Gemfile /myapp
 COPY ./Gemfile.lock /myapp
+RUN pwd
 RUN bundle install
 COPY . /myapp
 
