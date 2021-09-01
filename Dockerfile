@@ -12,7 +12,7 @@ RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp
 COPY Gemfile.lock /myapp
-COPY ./vendor/bundle /myapp/vendor/bundle
+COPY ./bundle /myapp/vendor/bundle
 RUN bundle install --path vendor/bundle -j4
 COPY . /myapp
 
