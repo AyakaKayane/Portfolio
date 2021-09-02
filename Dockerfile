@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 RUN apt-get update -qq && apt-get install -y nodejs yarn
 RUN mkdir /myapp
 WORKDIR /myapp
-COPY ./Gemfile /myapp
-COPY ./Gemfile.lock /myapp
+COPY ./Gemfile /myapp/Gemfile
+COPY ./Gemfile.lock /myapp/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
 COPY . /myapp
