@@ -12,7 +12,7 @@ RUN mkdir /myapp
 WORKDIR /myapp
 COPY ./Gemfile /myapp
 COPY ./Gemfile.lock /myapp
-RUN ls
+RUN gem install bundler
 RUN bundle install
 COPY . /myapp
 
