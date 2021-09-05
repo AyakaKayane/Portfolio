@@ -8,6 +8,14 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: setup bundler
+          command: |
+            sudo gem update --system
+            sudo gem uninstall bundler
+            sudo rm /usr/local/bin/bundle
+            sudo rm /usr/local/bin/bundler
+            sudo gem install bundler
+      - run:
           name: Setup environment variable
           command: |
             echo "export COMPOSE_FILE=docker-compose.yml" >> $BASH_ENV
