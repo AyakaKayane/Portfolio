@@ -16,6 +16,9 @@ jobs:
             sudo rm /usr/local/bin/bundler
             sudo gem install bundler
       - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - run:
           name: Setup environment variable
           command: |
             echo "export COMPOSE_FILE=docker-compose.yml" >> $BASH_ENV
