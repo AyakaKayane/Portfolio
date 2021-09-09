@@ -31,10 +31,10 @@ jobs:
       - run:
           name: Setup database
           command: |
-            bundle exec rails g spree:install --migrate --seed --sample --auto_accept
+            RAILS_ENV=test bundle exec rails g spree:install --migrate --seed --sample --auto_accept
       - run:
           name: Run rspec
-          command: bundle exec rspec
+          command: RAILS_ENV=test bundle exec rspec
 
   rubocop:
     working_directory: ~/portfolio
