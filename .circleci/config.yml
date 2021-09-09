@@ -34,7 +34,7 @@ jobs:
             RAILS_ENV=test bundle exec rails g spree:install --migrate --seed --sample --auto_accept
       - run:
           name: Run rspec
-          command: RAILS_ENV=test bundle exec rspec
+          command: bundle exec rspec
 
   rubocop:
     working_directory: ~/portfolio
