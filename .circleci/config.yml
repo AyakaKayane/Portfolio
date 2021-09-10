@@ -4,6 +4,7 @@ jobs:
     working_directory: ~/portfolio
     docker:
       - image: circleci/ruby:2.7.0
+      - image: circleci/mysql:5.7
     steps:
       - checkout
       - setup_remote_docker
