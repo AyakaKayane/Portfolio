@@ -4,7 +4,15 @@ jobs:
     working_directory: ~/portfolio
     docker:
       - image: circleci/ruby:2.7.0
+        environment:  
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: 'root'
+          DB_PASSWORD: ''
       - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ROOT_HOST: '%'
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
     steps:
       - checkout
       - setup_remote_docker
