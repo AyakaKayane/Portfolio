@@ -44,6 +44,7 @@ jobs:
       - run:
           name: yarn Install
           command: yarn install
+      - run:
           name: Run rspec
           command: RAILS_ENV=test bundle exec rspec
 
