@@ -44,6 +44,9 @@ jobs:
       - run:
           name: Run rspec
           command: RAILS_ENV=test bundle exec rspec
+      - run:
+          name: yarn Install
+          command: yarn install
 
   rubocop:
     working_directory: ~/portfolio
